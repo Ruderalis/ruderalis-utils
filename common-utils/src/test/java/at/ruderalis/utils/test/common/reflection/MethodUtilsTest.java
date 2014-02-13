@@ -9,14 +9,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import at.ruderalis.utils.common.reflection.ReflectionUtils;
+import at.ruderalis.utils.common.reflection.MethodUtils;
 
 /**
  * @author Thomas Herzog
  * @date Feb 12, 2014
  */
 @RunWith(JUnit4.class)
-public class ReflectionUtilsTest {
+public class MethodUtilsTest {
 
 	public abstract class AbstractSearchClass {
 
@@ -85,139 +85,139 @@ public class ReflectionUtilsTest {
 
 	@Test
 	public void testHasMethod_not_found() {
-		assertFalse(ReflectionUtils.hasMethod(SearchSingleClass.class,
+		assertFalse(MethodUtils.hasMethod(SearchSingleClass.class,
 				"notFoundMethod"));
 	}
 
 	@Test
 	public void testHasMethod_null_class() {
-		assertFalse(ReflectionUtils.hasMethod(null, "publicMethod"));
+		assertFalse(MethodUtils.hasMethod(null, "publicMethod"));
 	}
 
 	@Test
 	public void testHasMethod_null_name() {
-		assertFalse(ReflectionUtils.hasMethod(SearchSingleClass.class, null));
+		assertFalse(MethodUtils.hasMethod(SearchSingleClass.class, null));
 	}
 
 	@Test
 	public void testHasMethod_not_found_inherit_class() {
-		assertFalse(ReflectionUtils.hasMethod(SearchInheritClass.class,
+		assertFalse(MethodUtils.hasMethod(SearchInheritClass.class,
 				"privateBaseMethod"));
 	}
 
 	@Test
 	public void testHasMethod_single_class() {
-		assertTrue(ReflectionUtils.hasMethod(SearchSingleClass.class,
+		assertTrue(MethodUtils.hasMethod(SearchSingleClass.class,
 				"privateMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_not_found() {
-		assertNull(ReflectionUtils.getClassImplementsMethod(
+		assertNull(MethodUtils.getClassImplementsMethod(
 				SearchInheritClass.class, "doesNotExists"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_null_name() {
-		assertNull(ReflectionUtils.getClassImplementsMethod(
+		assertNull(MethodUtils.getClassImplementsMethod(
 				SearchInheritClass.class, null));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_null_class() {
-		assertNull(ReflectionUtils.getClassImplementsMethod(null,
+		assertNull(MethodUtils.getClassImplementsMethod(null,
 				"publicMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_interface() {
-		assertNull(ReflectionUtils.getClassImplementsMethod(
+		assertNull(MethodUtils.getClassImplementsMethod(
 				SearchInterface1.class, "publicMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_on_base_public() {
 		assertEquals(BaseSearchClass.class,
-				ReflectionUtils.getClassImplementsMethod(
+				MethodUtils.getClassImplementsMethod(
 						SearchInheritClass.class, "publicBaseMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_on_base_private() {
 		assertEquals(BaseSearchClass.class,
-				ReflectionUtils.getClassImplementsMethod(
+				MethodUtils.getClassImplementsMethod(
 						SearchInheritClass.class, "privateBaseMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_on_inherit_class_public() {
 		assertEquals(SearchInheritClass.class,
-				ReflectionUtils.getClassImplementsMethod(
+				MethodUtils.getClassImplementsMethod(
 						SearchInheritClass.class, "publicMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_on_inherit_class_private() {
 		assertEquals(SearchInheritClass.class,
-				ReflectionUtils.getClassImplementsMethod(
+				MethodUtils.getClassImplementsMethod(
 						SearchInheritClass.class, "privateMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_on_inherit_class_abstract() {
 		assertEquals(SearchInheritClass.class,
-				ReflectionUtils.getClassImplementsMethod(
+				MethodUtils.getClassImplementsMethod(
 						SearchInheritClass.class, "abstractMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_on_single_class_public() {
 		assertEquals(SearchSingleClass.class,
-				ReflectionUtils.getClassImplementsMethod(
+				MethodUtils.getClassImplementsMethod(
 						SearchSingleClass.class, "publicMethod"));
 	}
 
 	@Test
 	public void testGetClassImplementsMethod_on_single_class_private() {
 		assertEquals(SearchSingleClass.class,
-				ReflectionUtils.getClassImplementsMethod(
+				MethodUtils.getClassImplementsMethod(
 						SearchSingleClass.class, "privateMethod"));
 	}
 
 	@Test
 	public void testGetInterfaceDeclaresMethod_not_found() {
-		assertNull(ReflectionUtils.getInterfaceDeclaresMethod(
+		assertNull(MethodUtils.getInterfaceDeclaresMethod(
 				SearchInterface1.class, "doesNotExists"));
 	}
 
 	@Test
 	public void testGetInterfaceDeclaresMethod_null_name() {
-		assertNull(ReflectionUtils.getInterfaceDeclaresMethod(
+		assertNull(MethodUtils.getInterfaceDeclaresMethod(
 				SearchInterface1.class, null));
 	}
 
 	@Test
 	public void testGetInterfaceDeclaresMethod_null_interface() {
-		assertNull(ReflectionUtils.getInterfaceDeclaresMethod(null,
+		assertNull(MethodUtils.getInterfaceDeclaresMethod(null,
 				"interfaceMethod"));
 	}
 
 	@Test
 	public void testGetInterfaceDeclaresMethod_class() {
-		assertNull(ReflectionUtils.getInterfaceDeclaresMethod(
+		assertNull(MethodUtils.getInterfaceDeclaresMethod(
 				SearchInheritClass.class, "publicMethod"));
 	}
 
 	@Test
 	public void testGetInterfaceDeclaresMethod_single_interface() {
-		assertNull(ReflectionUtils.getInterfaceDeclaresMethod(
+		assertNull(MethodUtils.getInterfaceDeclaresMethod(
 				SearchInterface1.class, "interfaceMethod1"));
 	}
 
 	@Test
 	public void testGetInterfaceDeclaresMethod_interface() {
 		assertEquals(SearchInterface1.class,
-				ReflectionUtils.getInterfaceDeclaresMethod(
+				MethodUtils.getInterfaceDeclaresMethod(
 						SearchInterface3.class, "interfaceMethod1"));
 	}
 }

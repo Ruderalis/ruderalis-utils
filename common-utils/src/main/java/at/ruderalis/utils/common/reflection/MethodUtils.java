@@ -5,13 +5,13 @@ package at.ruderalis.utils.common.reflection;
 
 import java.lang.reflect.Method;
 
-import at.ruderalis.utils.common.StringUtils;
+import at.ruderalis.utils.common.string.StringUtils;
 
 /**
  * @author Thomas Herzog
  * @date Feb 12, 2014
  */
-public class ReflectionUtils {
+public class MethodUtils {
 
 	public static <T> Method getGetter(final Class<T> target, final String name) {
 		return null;
@@ -20,7 +20,7 @@ public class ReflectionUtils {
 	public static <T> Method getMethod(final T target, final String name,
 			final Class<?>... parameterTypes) {
 
-		return ReflectionUtils.getMethod(target != null ? target.getClass()
+		return MethodUtils.getMethod(target != null ? target.getClass()
 				: null, name);
 	}
 

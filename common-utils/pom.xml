@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>at.ruderalis.utils</groupId>
-	<artifactId>common-utils</artifactId>
+	<artifactId>ruderalis-common-utils</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>common</name>
+	<name>ruderalis-common</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -21,4 +21,12 @@
 			<version>4.6</version>
 		</dependency>
 	</dependencies>
+	<organization>
+		<name>Ruderalis (private)</name>
+		<url>https://github.com/Ruderalis</url>
+	</organization>
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/Ruderalis/ruderalis-utils/issues</url>
+	</issueManagement>
 </project>
